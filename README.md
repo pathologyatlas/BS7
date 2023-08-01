@@ -1,142 +1,114 @@
-# template
-
-
-
-**template for pathology atlas repositories**
 
 
 
 
-> see [make-html-WSI](https://github.com/pathologyatlas/make-html-WSI) for more information and [TODO](https://github.com/pathologyatlas/TODO) to add cases
 
 
 
-
-> do not forget to activate github pages for the new repository
-
-
-
-
-```zsh
-
-vips dzsave HE.svs HE
 
 ```
-
-
-
-
-```{r language template, echo=FALSE, include=TRUE}
-
+r language BS7, echo=FALSE, include=TRUE
 source("./R/language.R")
+output_type <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+```
 
+
+```
+asis nekrotizan sialometaplazi, SCC sonrası radyoterapi , echo = (language == "TR")
+## BS7 - nekrotizan sialometaplazi, SCC sonrası radyoterapi {#sec-BS7 }
+```
+
+
+```
+asis necrotising sialometaplasia, radiotherapy after SCC , echo = (language == "EN")
+## BS7 - necrotising sialometaplasia, radiotherapy after SCC {#sec-BS7 }
 ```
 
 
 
 
-```{asis, echo = (language == "TR")}
 
-## TemplateTR
 
+```
+r BS7 screenshot HE, eval=TRUE, include=FALSE
+if (!file.exists("./screenshots/BS7-HE_screenshot.png")) {
+webshot2::webshot(
+  url = "https://images.patolojiatlasi.com/BS7/HE.html",
+  file = "./screenshots/BS7-HE_screenshot.png"
+)
+}
 ```
 
 
 
 
-```{asis, echo = (language == "EN")}
 
-## TemplateEN
-
-```
+::::: panel-tabset
 
 
+### WSI - Link
 
 
-```{asis, echo = (language == "TR")}
-
-**templateTR**
 
 
-[https://images.patolojiatlasi.com/template/HE.html](https://images.patolojiatlasi.com/template/HE.html)
 
-Mikroskopik görüntüleri inceleyin:
 
-<iframe src="https://images.patolojiatlasi.com/template/HE.html" style="height:400px;width:100%;" data-external="1"></iframe>
 
 ```
-
-```{comment}
 asis, echo = (language == "TR")
 
+**nekrotizan sialometaplazi, SCC sonrası radyoterapi**
 
 
-<button id="tani-case-template-btn">Tanıyı Göster</button>
-<div id="answer-template" style="display: none;">templateTR</div>
-
-<script>
-  const showAnswer-templateBtn = document.getElementById('tani-case-template-btn');
-  const answer-template = document.getElementById('answer-template');
-
-  showAnswer-templateBtn.addEventListener('click', () => {
-    if (answer-template.style.display === 'none') {
-      answer-template.style.display = 'block';
-      showAnswer-templateBtn.textContent = 'Tanıyı Gizle';
-    } else {
-      answer-template.style.display = 'none';
-      showAnswer-templateBtn.textContent = 'Tanıyı Göster';
-    }
-  });
-</script>
-
-
-
-{{< video https://www.youtube.com/embed/ >}}
-
-
-
+[![Tam Ekran Görmek İçin Resmi Tıklayın](./screenshots/BS7-HE_screenshot.png){width="25%"}](https://images.patolojiatlasi.com/BS7/HE.html) [Tam Ekran Görmek İçin Resmi Tıklayın](https://images.patolojiatlasi.com/BS7/HE.html)
 ```
 
-
-
-```{asis, echo = (language == "EN")}
-
-**templateEN**
-
-
-[https://images.patolojiatlasi.com/template/HE.html](https://images.patolojiatlasi.com/template/HE.html)
-
-See Microscopy with viewer: 
-
-<iframe src="https://images.patolojiatlasi.com/template/HE.html" style="height:400px;width:100%;" data-external="1"></iframe>
-
 ```
-
-
-```{comment}
 asis, echo = (language == "EN")
 
-<button id="dx-case-template-btn">Show the Diagnosis</button>
-<div id="answer-template" style="display: none;">templateEN</div>
+**necrotising sialometaplasia, radiotherapy after SCC**
 
-<script>
-  const showAnswer-templateBtn = document.getElementById('dx-case-template-btn');
-  const answer-template = document.getElementById('answer-template');
+[![Click for Full Screen WSI](./screenshots/BS7-HE_screenshot.png){width="25%"}](https://images.patolojiatlasi.com/BS7/HE.html) [Click for Full Screen WSI](https://images.patolojiatlasi.com/BS7/HE.html)
 
-  showAnswer-templateBtn.addEventListener('click', () => {
-    if (answer-template.style.display === 'none') {
-      answer-template.style.display = 'block';
-      showAnswer-templateBtn.textContent = 'Hide the Diagnosis';
-    } else {
-      answer-template.style.display = 'none';
-      showAnswer-templateBtn.textContent = 'Show the Diagnosis';
-    }
-  });
-</script>
+```
 
 
-{{< video https://www.youtube.com/embed/ >}}
+
+
+
+### WSI
+
+
+
+
+
 
 
 
 ```
+asis, echo = ((language=="TR") & (output_type=="html"))
+Mikroskopik görüntüleri inceleyin:
+
+<iframe src="https://images.patolojiatlasi.com/BS7/HE.html" style="height:600px;width:100%;" data-external="1"></iframe>
+
+```
+
+
+
+
+
+```
+asis, echo = ((language == "EN") & (output_type=="html"))
+
+See Microscopy with viewer:
+
+<iframe src="https://images.patolojiatlasi.com/BS7/HE.html" style="height:600px;width:100%;" data-external="1"></iframe>
+
+```
+
+
+
+
+
+
+:::::
